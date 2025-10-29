@@ -1,0 +1,53 @@
+<Project>
+
+  <!-- Solution-wide version management -->
+  <PropertyGroup>
+    <!-- Major.Minor.Patch versioning -->
+    <VersionMajor>0</VersionMajor>
+    <VersionMinor>1</VersionMinor>
+    <VersionPatch>0</VersionPatch>
+    <VersionSuffix>beta</VersionSuffix>
+    
+    <!-- Computed version strings -->
+    <VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
+    <Version Condition=" '$(VersionSuffix)' == '' ">$(VersionPrefix)</Version>
+    <Version Condition=" '$(VersionSuffix)' != '' ">$(VersionPrefix)-$(VersionSuffix)</Version>
+    
+    <!-- Assembly version (major.minor only for compatibility) -->
+    <AssemblyVersion>$(VersionMajor).$(VersionMinor).0.0</AssemblyVersion>
+    <FileVersion>$(VersionPrefix)</FileVersion>
+    
+    <!-- Package version inherits from Version -->
+    <PackageVersion>$(Version)</PackageVersion>
+  </PropertyGroup>
+
+  <!-- Common package metadata for all projects -->
+  <PropertyGroup>
+    <Authors>POC-MCP Team</Authors>
+    <Company>POC-MCP</Company>
+    <Product>POC-MCP</Product>
+    <Copyright>Copyright © $(Company) $([System.DateTime]::Now.Year)</Copyright>
+    <RepositoryUrl>https://github.com/your-org/POC-MCP</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <!-- Build configuration -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <WarningsNotAsErrors />
+  </PropertyGroup>
+
+  <!-- Git versioning integration (if available) -->
+  <PropertyGroup Condition="'$(GITHUB_RUN_NUMBER)' != ''">
+    <VersionSuffix Condition="'$(VersionSuffix)' != ''">$(VersionSuffix).$(GITHUB_RUN_NUMBER)</VersionSuffix>
+    <VersionSuffix Condition="'$(VersionSuffix)' == ''">ci.$(GITHUB_RUN_NUMBER)</VersionSuffix>
+  </PropertyGroup>
+
+</Project>

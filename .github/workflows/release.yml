@@ -1,0 +1,116 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+env:
+  DOTNET_VERSION: '9.0.x'
+  PROJECT_PATH: 'src/SampleMcpServer'
+
+jobs:
+  create-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history for changelog
+        
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        global-json-file: global.json
+        
+    - name: Extract version from tag
+      id: version
+      run: |
+        VERSION=${GITHUB_REF#refs/tags/v}
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "Version: $VERSION"
+        
+    - name: Build and pack release
+      run: |
+        dotnet clean
+        dotnet build --configuration Release
+        dotnet pack ${{ env.PROJECT_PATH }} --configuration Release --no-build
+        
+    - name: Generate changelog
+      id: changelog
+      run: |
+        # Get commits since last tag
+        LAST_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+        if [ -z "$LAST_TAG" ]; then
+          COMMITS=$(git log --pretty=format:"- %s" HEAD)
+        else
+          COMMITS=$(git log --pretty=format:"- %s" $LAST_TAG..HEAD)
+        fi
+        
+        # Create changelog
+        cat > CHANGELOG.md << EOF
+        ## Changes in v${{ steps.version.outputs.version }}
+        
+        $COMMITS
+        
+        ## Installation
+        
+        \`\`\`bash
+        # Install via NuGet (when published)
+        dotnet tool install --global SampleMcpServer --version ${{ steps.version.outputs.version }}
+        
+        # Or download package directly from releases
+        \`\`\`
+        
+        ## MCP Configuration
+        
+        ### VS Code (.vscode/mcp.json)
+        \`\`\`json
+        {
+          "servers": {
+            "SampleMcpServer": {
+              "type": "stdio",
+              "command": "dnx",
+              "args": ["SampleMcpServer", "--version", "${{ steps.version.outputs.version }}", "--yes"]
+            }
+          }
+        }
+        \`\`\`
+        
+        ### Visual Studio (.mcp.json)
+        \`\`\`json
+        {
+          "servers": {
+            "SampleMcpServer": {
+              "type": "stdio", 
+              "command": "dnx",
+              "args": ["SampleMcpServer", "--version", "${{ steps.version.outputs.version }}", "--yes"]
+            }
+          }
+        }
+        \`\`\`
+        EOF
+        
+    - name: Create GitHub release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: Release v${{ steps.version.outputs.version }}
+        body_path: CHANGELOG.md
+        files: |
+          ${{ env.PROJECT_PATH }}/bin/Release/*.nupkg
+        draft: false
+        prerelease: ${{ contains(steps.version.outputs.version, '-') }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Publish to NuGet
+      if: ${{ !contains(steps.version.outputs.version, '-') }}  # Only stable releases
+      run: |
+        dotnet nuget push ${{ env.PROJECT_PATH }}/bin/Release/*.nupkg \
+          --api-key ${{ secrets.NUGET_API_KEY }} \
+          --source https://api.nuget.org/v3/index.json \
+          --skip-duplicate
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
