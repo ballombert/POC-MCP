@@ -1,12 +1,12 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
-  "description": "<your description here>",
-  "name": "io.github.<your GitHub username here>/<your repo name>",
+  "description": "A .NET MCP server demonstration using the official Microsoft SDK",
+  "name": "io.github.ballombert/poc-mcp",
   "version": "0.1.0-beta",
   "packages": [
     {
       "registryType": "nuget",
-      "identifier": "<your package ID here>",
+      "identifier": "SampleMcpServer",
       "version": "0.1.0-beta",
       "transport": {
         "type": "stdio"
@@ -16,7 +16,7 @@
     }
   ],
   "repository": {
-    "url": "https://github.com/<your GitHub username here>/<your repo name>",
+    "url": "https://github.com/ballombert/POC-MCP",
     "source": "github"
   }
 }

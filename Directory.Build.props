@@ -1,6 +1,17 @@
 <Project>
 
-  <!-- Solution-wide version management -->
+  <!-- Solut  <!-- Common package metadata for all projects -->
+  <PropertyGroup>
+    <Authors>POC-MCP Team</Authors>
+    <Company>POC-MCP</Company>
+    <Product>POC-MCP</Product>
+    <Copyright>Copyright © $(Company) $([System.DateTime]::Now.Year)</Copyright>
+    <RepositoryUrl>https://github.com/ballombert/POC-MCP</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>sion management -->
   <PropertyGroup>
     <!-- Major.Minor.Patch versioning -->
     <VersionMajor>0</VersionMajor>
@@ -27,7 +38,7 @@
     <Company>POC-MCP</Company>
     <Product>POC-MCP</Product>
     <Copyright>Copyright © $(Company) $([System.DateTime]::Now.Year)</Copyright>
-    <RepositoryUrl>https://github.com/your-org/POC-MCP</RepositoryUrl>
+    <RepositoryUrl>https://github.com/YOUR-USERNAME/POC-MCP</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>

@@ -14,7 +14,7 @@ Thank you for your interest in contributing to POC-MCP! This document provides g
 
 1. **Fork and clone the repository:**
    ```bash
-   git clone https://github.com/your-username/POC-MCP.git
+   git clone https://github.com/ballombert/POC-MCP.git
    cd POC-MCP
    ```
 

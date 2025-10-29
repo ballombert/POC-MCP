@@ -66,7 +66,7 @@ POC-MCP/
 
 1. **Clone and navigate to the project:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/ballombert/POC-MCP.git
    cd POC-MCP
    ```
 

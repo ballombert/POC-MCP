@@ -15,8 +15,9 @@ This guide will help you set up and run the POC-MCP .NET server locally.
 ### 1. Clone and Build
 
 ```bash
+```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/ballombert/POC-MCP.git
 cd POC-MCP
 
 # Verify .NET SDK version (should be 9.0.100 or compatible)
