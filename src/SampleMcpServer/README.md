@@ -51,7 +51,32 @@ To test this MCP server from source code (locally) without using a built MCP ser
 
 ## Testing the MCP Server
 
-Once configured, you can ask Copilot Chat for a random number, for example, `Give me 3 random numbers`. It should prompt you to use the `get_random_number` tool on the `SampleMcpServer` MCP server and show you the results.
+Once configured, you can test the MCP server with various commands:
+
+### Random Number Tools
+- Ask Copilot Chat for random numbers: `Give me 3 random numbers`
+- It should use the `get_random_number` tool and show you the results.
+
+### Pomodoro Timer Tools
+The server includes several Pomodoro Timer tools:
+
+1. **Console Pomodoro Session**: `Start a 25-minute work session with 5-minute breaks`
+2. **Graphical Pomodoro Session**: `Launch a Pomodoro timer with graphical interface` 
+3. **Get Pomodoro Status**: `What's the status of my Pomodoro session?`
+4. **Stop Pomodoro Session**: `Stop my current Pomodoro session`
+5. **Available Languages**: `What languages are available for the Pomodoro timer?`
+
+#### Available Pomodoro Commands:
+- `start_pomodoro_console` - Starts a console-based Pomodoro session
+- `start_pomodoro_graphical` - 🆕 Launches the Pomodoro Timer with graphical interface
+- `stop_pomodoro_session` - Stops the current session
+- `get_pomodoro_status` - Gets session status
+- `get_available_languages` - Shows supported languages (en, fr, es, ja, ru, zh)
+
+#### Example Usage:
+- "Start a 30-minute work session with graphical interface"
+- "Launch a Pomodoro timer in French with 25 minutes work and 10 minutes break"
+- "Stop my current timer session"
 
 ## Publishing to NuGet.org
 

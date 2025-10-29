@@ -16,6 +16,11 @@
     <Description>An MCP server using the MCP C# SDK.</Description>
   </PropertyGroup>
 
+  <!-- Windows-specific configuration -->
+  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
   <!-- Allow test assembly to access internal types -->
   <ItemGroup>
     <InternalsVisibleTo Include="SampleMcpServer.Tests" />
@@ -37,6 +42,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0-preview.6.25358.103" />
     <PackageReference Include="ModelContextProtocol" Version="0.4.0-preview.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../PomodoroTimer/PomodoroTimer.csproj" />
   </ItemGroup>
 
 </Project>

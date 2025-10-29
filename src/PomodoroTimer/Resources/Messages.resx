@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Usage" xml:space="preserve">
+    <value>Usage: PomodoroTimer &lt;temps_travail_minutes&gt; &lt;temps_pause_minutes&gt; [options]</value>
+  </data>
+  <data name="Example" xml:space="preserve">
+    <value>Exemple: PomodoroTimer 25 5
+      PomodoroTimer 25 5 --ui           (interface graphique)
+      PomodoroTimer 25 5 --lang=en      (en anglais)</value>
+  </data>
+  <data name="ErrorWorkTime" xml:space="preserve">
+    <value>Erreur: Le temps de travail doit être un nombre entier positif (en minutes)</value>
+  </data>
+  <data name="ErrorBreakTime" xml:space="preserve">
+    <value>Erreur: Le temps de pause doit être un nombre entier positif (en minutes)</value>
+  </data>
+  <data name="SessionHeader" xml:space="preserve">
+    <value>🍅 Session Pomodoro - Travail: {0}min, Pause: {1}min</value>
+  </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>Appuyez sur Ctrl+C pour arrêter</value>
+  </data>
+  <data name="SessionWork" xml:space="preserve">
+    <value>🔥 SESSION {0} - TRAVAIL ({1} minutes)</value>
+  </data>
+  <data name="WorkCompleted" xml:space="preserve">
+    <value>🎉 Temps de travail terminé!</value>
+  </data>
+  <data name="BreakTime" xml:space="preserve">
+    <value>☕ PAUSE ({0} minutes)</value>
+  </data>
+  <data name="BreakCompleted" xml:space="preserve">
+    <value>⏰ Pause terminée!</value>
+  </data>
+  <data name="ContinueInstructions" xml:space="preserve">
+    <value>Appuyez sur une touche pour continuer ou Ctrl+C pour arrêter...</value>
+  </data>
+  <data name="WorkPhase" xml:space="preserve">
+    <value>TRAVAIL</value>
+  </data>
+  <data name="BreakPhase" xml:space="preserve">
+    <value>PAUSE</value>
+  </data>
+  <data name="Remaining" xml:space="preserve">
+    <value>restant</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>TERMINÉ!</value>
+  </data>
+  <data name="LanguageOption" xml:space="preserve">
+    <value>Options de langue:</value>
+  </data>
+  <data name="LanguageInstructions" xml:space="preserve">
+    <value>Use --lang=en English, --lang=fr French, --lang=es Spanish, --lang=zh Chinese, --lang=ja Japanese, --lang=ru Russian</value>
+  </data>
+</root>

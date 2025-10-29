@@ -2,6 +2,8 @@
 
 A proof of concept implementation of an MCP (Model Context Protocol) server using .NET 9.0 and the official Microsoft ModelContextProtocol SDK.
 
+> 🚀 **GitHub Copilot Ready!** This project includes pre-configured MCP integration for VS Code. Open the project and ask Copilot: *"Launch a Pomodoro timer with graphical interface"* to see MCP in action!
+
 ## Overview
 
 This project demonstrates how to create and distribute MCP servers using C# and .NET. The server exposes tools that AI clients (like GitHub Copilot, Claude, etc.) can invoke through the standardized MCP protocol.
@@ -54,6 +56,9 @@ POC-MCP/
 - ✅ **stdio transport**: Uses JSON-RPC over stdin/stdout for communication
 - ✅ **Tool discovery**: AI assistants can automatically discover available tools
 - ✅ **IDE integration**: Works with VS Code and Visual Studio
+- 🤖 **GitHub Copilot Integration**: Pre-configured MCP setup in `.vscode/mcp.json`
+- 🍅 **Pomodoro Timer Tools**: Console and graphical interface Pomodoro sessions
+- 🎲 **Example Tools**: Random number generation for testing
 
 ## Quick Start
 
@@ -80,10 +85,14 @@ POC-MCP/
    dotnet run --project src/SampleMcpServer
    ```
 
-4. **Test with AI assistant:**
-   - Configure your IDE with the MCP server (see server README for details)
-   - Ask Copilot Chat: "Give me 3 random numbers"
-   - The server should be invoked automatically
+4. **Test with GitHub Copilot (VS Code):**
+   - The MCP server is pre-configured in `.vscode/mcp.json`
+   - Open GitHub Copilot Chat in VS Code
+   - Try these commands:
+     - "Give me 3 random numbers"
+     - "Launch a Pomodoro timer with graphical interface"
+     - "Start a 30-minute work session in French"
+   - The MCP server should be invoked automatically!
 
 ### Building and Distribution
 
@@ -115,14 +124,50 @@ POC-MCP/
    dotnet nuget push bin/Release/*.nupkg --api-key <your-key> --source https://api.nuget.org/v3/index.json
    ```
 
+## 🤖 GitHub Copilot Integration
+
+This project comes with GitHub Copilot integration pre-configured! The MCP server is automatically available when you open this project in VS Code.
+
+### Available Commands
+
+Ask GitHub Copilot any of these commands:
+
+#### 🍅 Pomodoro Timer
+- *"Launch a Pomodoro timer with graphical interface"*
+- *"Start a 25-minute work session with 5-minute breaks"*
+- *"Open the Pomodoro timer in French"*
+- *"Stop my current Pomodoro session"*
+- *"What's the status of my Pomodoro timer?"*
+
+#### 🎲 Utilities
+- *"Give me 3 random numbers"*
+- *"Generate random numbers between 10 and 50"*
+
+### How it Works
+
+1. **Auto-Detection**: VS Code automatically loads `.vscode/mcp.json`
+2. **Background Server**: The MCP server runs when Copilot needs it
+3. **Tool Invocation**: Copilot automatically chooses the right tool for your request
+4. **Real Results**: Get actual Pomodoro timers and random numbers!
+
+See [docs/github-copilot-mcp.md](docs/github-copilot-mcp.md) for detailed setup instructions.
+
 ## Example Tools
 
-The sample server includes a `RandomNumberTools` class demonstrating:
+The sample server includes multiple tool classes demonstrating:
 
+### 🎲 RandomNumberTools
 - Tool method decoration with `[McpServerTool]`
 - Parameter documentation with `[Description]` attributes
 - Default parameter values
 - Return value handling
+
+### 🍅 PomodoroTools
+- Console-based Pomodoro sessions
+- Graphical interface launching
+- Session management and status checking
+- Multi-language support (6 languages)
+- Process launching and error handling
 
 ```csharp
 [McpServerTool]
