@@ -16,6 +16,11 @@
     <Description>An MCP server using the MCP C# SDK.</Description>
   </PropertyGroup>
 
+  <!-- Allow test assembly to access internal types -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="SampleMcpServer.Tests" />
+  </ItemGroup>
+
   <!-- Self-contained configuration for manual publish (not for pack) -->
   <PropertyGroup Condition="'$(IsPublishing)' == 'true'">
     <SelfContained>true</SelfContained>
