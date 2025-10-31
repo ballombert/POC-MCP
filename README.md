@@ -213,7 +213,7 @@ This is a proof of concept project. When contributing:
 
 ## License
 
-[license.md]
+[License MIT](LICENSE)
 
 ---
 
